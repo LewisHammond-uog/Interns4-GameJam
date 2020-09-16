@@ -13,8 +13,17 @@ public class GameManager : MonoBehaviour
     public float GameSpeed
     {
         get => gameSpeed;
-        set => gameSpeed = value;
+        set
+        {
+            gameSpeed = value;
+            //Trigger event
+            GameSpeedChanged?.Invoke();
+        }
     }
+
+    //Event for when the game speed is changed
+    public delegate void GameManagerEvent();
+    public static event GameManagerEvent GameSpeedChanged;
 
     private void Awake()
     {
