@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creatorTag: 
-  damage: 5
+  damage: 50
   baseMoveSpeed: 5
   bulletRB: {fileID: 2720317012268630357}
   bulletLife: 30

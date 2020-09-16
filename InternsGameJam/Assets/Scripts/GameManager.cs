@@ -62,9 +62,9 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator SlowTimescaleForSetTime(float gameSpeed, float time)
     {
-        this.gameSpeed = gameSpeed; 
+        this.GameSpeed = gameSpeed;
         yield return new WaitForSecondsRealtime(time);
-        this.gameSpeed = 1;
+        this.GameSpeed = 1;
     }
 
     private void OnEnable()
