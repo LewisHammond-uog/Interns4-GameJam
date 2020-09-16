@@ -1,10 +1,24 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviourPunCallbacks
 {
 
+    private GameObject creator;
+    private PhotonView PV;
+    
+    //Property so creator can only be set if we do not have one already
+    public GameObject Creator
+    {
+        get { return creator; }
+        set { 
+            if (creator == null) {
+                creator = value;    
+            } 
+        }
+    }
     public string creatorTag;
 
     public bool EffectedByGameSpeed { get => effectedByGameSpeed; set => effectedByGameSpeed = value; }
@@ -30,11 +44,18 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PV = GetComponent<PhotonView>();
+
+        //Warning no creator
+        if (creator == null) { Debug.LogWarning("CREATOR HAS NOT BEEN SET FOR BULLET!"); }
+
+
         //Set our velocity on start
         if(bulletRB != null)
         {
             UpdateBulletBasedOnGameSpeed();
         }
+
 
         Destroy(gameObject, bulletLife);
 
@@ -45,6 +66,8 @@ public class Bullet : MonoBehaviour
     /// </summary>
     private void UpdateBulletBasedOnGameSpeed()
     {
+        //if (!PV.IsMine)
+        //    return;
         //Get the new game speed, mutiply it by the base speed,
         //set veloocity
         float newSpeed = effectedByGameSpeed ? baseMoveSpeed * GameManager.Instance.GameSpeed : baseMoveSpeed;

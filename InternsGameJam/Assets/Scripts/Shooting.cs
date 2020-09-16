@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
-public class Shooting : MonoBehaviour
+public class Shooting : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     protected Transform[] bulletSpawns; //Points to spawn the bullets at
@@ -21,9 +23,11 @@ public class Shooting : MonoBehaviour
     {
         foreach (Transform spawnPoint in bulletSpawns)
         {
-            GameObject bullet = Instantiate(bulletPrefab);
-            bullet.transform.position = spawnPoint.position;
-            bullet.transform.rotation = spawnPoint.rotation;
+
+       //     GameObject bullet = Instantiate(bulletPrefab);
+            GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "PlayerBullet"), spawnPoint.position, spawnPoint.rotation, 0);
+         //   bullet.transform.position = spawnPoint.position;
+         //   bullet.transform.rotation = spawnPoint.rotation;
             bullet.GetComponent<Bullet>().creatorTag = this.gameObject.tag;
         }
     }
