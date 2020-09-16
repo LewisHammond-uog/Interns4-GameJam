@@ -24,6 +24,9 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private Rigidbody2D bulletRB;
 
+    [SerializeField]
+    private float bulletLife = 30f; //time before bullet destroys in seconds
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,8 @@ public class Bullet : MonoBehaviour
         {
             UpdateBulletBasedOnGameSpeed();
         }
+
+        Destroy(gameObject, bulletLife);
 
     }
 
