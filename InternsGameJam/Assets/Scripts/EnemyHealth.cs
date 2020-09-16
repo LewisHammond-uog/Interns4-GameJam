@@ -33,7 +33,7 @@ public class EnemyHealth : MonoBehaviour
         EnemyDeath?.Invoke();
 
         //When an enemy dies half the timescale for 30 seconds
-        StartCoroutine(GameManager.Instance.SlowTimescaleForSetTime(0.25f, 3));
+        GameManager.Instance.SlowGameForEnemyDeath();
 
         Destroy(gameObject);
     }
