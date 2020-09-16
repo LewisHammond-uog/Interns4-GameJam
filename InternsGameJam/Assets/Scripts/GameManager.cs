@@ -8,6 +8,17 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get => instance; set => instance = value; }
 
+    private int score;
+    public int CurrentScore { private set => score = value; get => score; }
+    private int scorePerKill = 1000;
+
+    //Event for score change
+    public delegate void ScoreChangeEvent(int newScore);
+    public static event ScoreChangeEvent ReportScoreIncrease;
+    public static event ScoreChangeEvent ReportScoreDecrease;
+    public static event ScoreChangeEvent ReportScoreReset;
+
+
     private float gameSpeed = 1f;
 
     public float GameSpeed
@@ -35,10 +46,26 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    private void EnemyDeathIncreaseScore()
+    {
+        //Increase the score
+        CurrentScore += scorePerKill;
+        ReportScoreIncrease(CurrentScore);
+    }
+
     public void TestGameSpeed(int speed)
     {
         GameSpeed += speed;
 
         Debug.Log("The game speed is now " + GameSpeed);
+    }
+
+    private void OnEnable()
+    {
+        EnemyHealth.EnemyDeath += EnemyDeathIncreaseScore;
+    }
+    private void OnDisable()
+    {
+        EnemyHealth.EnemyDeath -= EnemyDeathIncreaseScore;
     }
 }
