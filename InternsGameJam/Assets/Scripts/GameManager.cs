@@ -60,10 +60,15 @@ public class GameManager : MonoBehaviour
         Debug.Log("The game speed is now " + GameSpeed);
     }
 
-    public IEnumerator SlowTimescaleForSetTime(float gameSpeed, float time)
+    public void SlowGameForEnemyDeath()
+    {
+        StartCoroutine(SlowTimescaleForSetTime(0.25f, 3f));
+    }
+
+    private IEnumerator SlowTimescaleForSetTime(float gameSpeed, float time)
     {
         this.GameSpeed = gameSpeed;
-        yield return new WaitForSecondsRealtime(time);
+        yield return new WaitForSeconds(time);
         this.GameSpeed = 1;
     }
 
