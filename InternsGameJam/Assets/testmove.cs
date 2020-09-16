@@ -9,6 +9,8 @@ public class testmove : MonoBehaviour
     private Rigidbody2D rb;
     private float x;
     private float y;
+
+    private float speedModifier = 30f;
     
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,6 @@ public class testmove : MonoBehaviour
     {
         Vector2 inputVelocity = new Vector2(x, y);
         
-        rb.velocity = inputVelocity * GameManager.Instance.GameSpeed;
+        rb.velocity = inputVelocity * (speedModifier * Time.deltaTime);
     }
 }
