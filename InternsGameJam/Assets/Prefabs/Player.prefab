@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawns:
   - {fileID: 464668666}
-  shootingCooldown: 0.5
+  shootingCooldown: 0.2
   bulletPrefab: {fileID: 2720317012268630345, guid: a28505d21d3e9864484a709b8bb0ee3c,
     type: 3}
 --- !u!1 &1146928683089815899
