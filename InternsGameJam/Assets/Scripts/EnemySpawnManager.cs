@@ -1,10 +1,11 @@
 ﻿using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using Vector2 = System.Numerics.Vector2;
 
-public class EnemySpawnManager : MonoBehaviourPunCallbacks
+public class EnemySpawnManager : MonoBehaviourPunCallbacks, IPunObservable
 {
     public static int enemyCount;
 
@@ -25,6 +26,8 @@ public class EnemySpawnManager : MonoBehaviourPunCallbacks
     private float y;
 
     private PhotonView PV;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -77,11 +80,16 @@ public class EnemySpawnManager : MonoBehaviourPunCallbacks
     {
         if (Random.value < .9)
         {
-            SpawnEnemy(normalEnemyPrefab, GetLocation());
+            PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Normal Enemy"), GetLocation(), Quaternion.identity, 0);
+
+            PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Enemy Variation"), GetLocation(), Quaternion.identity, 0);
+           // SpawnEnemy(normalEnemyPrefab, GetLocation());
         }
         else
         {
-            SpawnEnemy(variationEnemyPrefab, GetLocation());
+            PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Enemy Variation"), GetLocation(), Quaternion.identity, 0);
+
+            // SpawnEnemy(variationEnemyPrefab, GetLocation());
         }
     }
     
@@ -102,5 +110,20 @@ public class EnemySpawnManager : MonoBehaviourPunCallbacks
     public void KillRandoEnemy()
     {
         GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyHealth>().TakeDamage(100);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+
+        if (stream.IsWriting)
+        {
+            stream.SendNext(GetLocation());
+        }
+        else
+        {
+            this.transform.position = (Vector3)stream.ReceiveNext();
+
+        }
+
     }
 }
