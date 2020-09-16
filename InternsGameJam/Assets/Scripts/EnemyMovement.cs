@@ -37,8 +37,8 @@ public class EnemyMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Random.seed = (int)System.DateTime.Now.Ticks;
-        
-        if (GameManager.Instance.GameSpeed <= 0f)
+
+        if (GameManager.Instance.GameSpeed <= 0f || target == null)
         {
             return;
         }
