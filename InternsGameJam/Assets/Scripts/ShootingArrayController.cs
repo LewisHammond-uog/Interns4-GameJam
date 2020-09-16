@@ -29,7 +29,7 @@ public class ShootingArrayController : MonoBehaviour
         float yPos = Mathf.Sin(Mathf.Deg2Rad * angle) * orbitDist;
 
         //Apply Position
-        transform.localPosition = new Vector3(player.transform.position.x + xPos * 3, player.transform.position.y + yPos * 3, 0);
+        transform.position = new Vector3(player.transform.position.x + xPos * 3, player.transform.position.y + yPos * 3, 0);
 
     }
 }
