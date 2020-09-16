@@ -24,7 +24,7 @@ public class EnemyShooting : Shooting
 
         if(timeSinceLastShot > randomWaitTime)
         {
-            Shoot();
+            Shoot(true);
             randomWaitTime = GetRandomWaitTime();
             timeSinceLastShot = 0f;
         }
