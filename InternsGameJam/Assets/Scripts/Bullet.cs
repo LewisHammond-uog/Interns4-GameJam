@@ -80,6 +80,11 @@ public class Bullet : MonoBehaviour
         GameManager.GameSpeedChanged -= UpdateBulletBasedOnGameSpeed;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
+    }
 
-    
+
+
 }

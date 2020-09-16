@@ -10,8 +10,14 @@ public class PlayerData : MonoBehaviour
     private float Health {
         get { return health; }
         set { 
+            //Trigger comparision events
             if(health < value) { PlayerHealed?.Invoke(); }
-            if(health > value) { PlayerHealed?.Invoke(); }
+            if(health > value) { PlayerDamaged?.Invoke(); }
+
+            //Update health
+            health = value;
+
+            //Trigger death event
             if (health <= 0) { PlayerDeath?.Invoke();  }
 
         }
@@ -32,18 +38,18 @@ public class PlayerData : MonoBehaviour
         Health = startHealth;
     }
 
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         //Check if we have collided with a bullet
         Bullet hitBullet;
-        if(collision.gameObject.TryGetComponent<Bullet>(out hitBullet))
+        if (collision.gameObject.TryGetComponent<Bullet>(out hitBullet))
         {
             //Don't do damange if we didn't create this
-            if(hitBullet.Creator != this.gameObject)
+            if (hitBullet.Creator != this.gameObject)
             {
                 Health -= hitBullet.BulletDamage;
                 PlayerDamaged?.Invoke();
+                Debug.Log(health);
             }
         }
     }
