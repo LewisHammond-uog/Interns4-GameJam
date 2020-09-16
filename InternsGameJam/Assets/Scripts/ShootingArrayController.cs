@@ -8,7 +8,7 @@ public class ShootingArrayController : MonoBehaviour
     private Transform player;
 
     [SerializeField]
-    private float orbitDist;
+    private float orbitDist = 1.5f;
 
 
     private void Update()
@@ -29,7 +29,7 @@ public class ShootingArrayController : MonoBehaviour
         float yPos = Mathf.Sin(Mathf.Deg2Rad * angle) * orbitDist;
 
         //Apply Position
-        transform.localPosition = new Vector3(player.transform.position.x + xPos, player.transform.position.y + yPos, 0);
+        transform.localPosition = new Vector3(player.transform.position.x + xPos * 3, player.transform.position.y + yPos * 3, 0);
 
     }
 }

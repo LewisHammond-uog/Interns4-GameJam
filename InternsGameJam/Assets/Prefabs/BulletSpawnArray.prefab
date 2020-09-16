@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1670119760788849529}
   - component: {fileID: 1670119760788849534}
   m_Layer: 0
-  m_Name: BulletRotator
+  m_Name: BulletSpawnArray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  orbitDist: 1
 --- !u!212 &1670119760788849534
 SpriteRenderer:
   m_ObjectHideFlags: 0
