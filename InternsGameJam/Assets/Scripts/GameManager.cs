@@ -12,6 +12,12 @@ public class GameManager : MonoBehaviour
     public int CurrentScore { private set => score = value; get => score; }
     private int scorePerKill = 1000;
 
+    //Event for score change
+    public delegate void ScoreChangeEvent(int newScore);
+    public static event ScoreChangeEvent ReportScoreIncrease;
+    public static event ScoreChangeEvent ReportScoreDecrease;
+    public static event ScoreChangeEvent ReportScoreReset;
+
 
     private float gameSpeed = 1f;
 
@@ -44,6 +50,7 @@ public class GameManager : MonoBehaviour
     {
         //Increase the score
         CurrentScore += scorePerKill;
+        ReportScoreIncrease(CurrentScore);
     }
 
     public void TestGameSpeed(int speed)
