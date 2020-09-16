@@ -18,6 +18,10 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    public bool EffectedByGameSpeed { get => effectedByGameSpeed; set => effectedByGameSpeed = value; }
+    private bool effectedByGameSpeed = true;
+
+
     [SerializeField]
     private float baseMoveSpeed; //Movespeed when time scale is 1
 
@@ -46,7 +50,8 @@ public class Bullet : MonoBehaviour
     {
         //Get the new game speed, mutiply it by the base speed,
         //set veloocity
-        UpdateSpeed(baseMoveSpeed * GameManager.Instance.GameSpeed);
+        float newSpeed = effectedByGameSpeed ? baseMoveSpeed * GameManager.Instance.GameSpeed : baseMoveSpeed;
+        UpdateSpeed(newSpeed);
     }
 
     /// <summary>
