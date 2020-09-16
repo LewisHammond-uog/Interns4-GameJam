@@ -5,18 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
-    private GameObject creator;
-    
-    //Property so creator can only be set if we do not have one already
-    public GameObject Creator
-    {
-        get { return creator; }
-        set { 
-            if (creator == null) {
-                creator = value;    
-            } 
-        }
-    }
+    public string creatorTag;
 
     public bool EffectedByGameSpeed { get => effectedByGameSpeed; set => effectedByGameSpeed = value; }
     private bool effectedByGameSpeed = true;
@@ -38,10 +27,6 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Warning no creator
-        if (creator == null) { Debug.LogWarning("CREATOR HAS NOT BEEN SET FOR BULLET!"); }
-
-
         //Set our velocity on start
         if(bulletRB != null)
         {

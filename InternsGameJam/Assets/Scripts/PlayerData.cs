@@ -45,7 +45,7 @@ public class PlayerData : MonoBehaviour
         if (collision.gameObject.TryGetComponent<Bullet>(out hitBullet))
         {
             //Don't do damange if we didn't create this
-            if (hitBullet.Creator != this.gameObject)
+            if (hitBullet.creatorTag != this.gameObject.tag)
             {
                 Health -= hitBullet.BulletDamage;
                 PlayerDamaged?.Invoke();
