@@ -13,7 +13,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Awake()
     {
-        enemyHealth = 100;
+        enemyHealth = 5;
     }
 
     public void TakeDamage(int damage)
