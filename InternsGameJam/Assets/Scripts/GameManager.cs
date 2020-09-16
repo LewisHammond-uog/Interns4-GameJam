@@ -60,6 +60,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("The game speed is now " + GameSpeed);
     }
 
+    public IEnumerator SlowTimescaleForSetTime(float gameSpeed, float time)
+    {
+        this.gameSpeed = gameSpeed; 
+        yield return new WaitForSecondsRealtime(time);
+        this.gameSpeed = 1;
+    }
+
     private void OnEnable()
     {
         EnemyHealth.EnemyDeath += EnemyDeathIncreaseScore;
