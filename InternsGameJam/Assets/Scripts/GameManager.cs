@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     {
         //Increase the score
         CurrentScore += scorePerKill;
-        ReportScoreIncrease(CurrentScore);
+        ReportScoreIncrease?.Invoke(CurrentScore);
     }
 
     public void TestGameSpeed(int speed)
