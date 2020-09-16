@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1146928683089815897}
-  orbitDist: 1.5
+  orbitDist: 0.5
 --- !u!114 &1900942403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   bulletSpawns:
   - {fileID: 464668666}
   shootingCooldown: 0.2
-  bulletPrefab: {fileID: 2720317012268630345, guid: a28505d21d3e9864484a709b8bb0ee3c,
+  bulletPrefab: {fileID: 2720317012268630345, guid: b3ad9c9a893a33d4bb6bbf26c3dbdfa3,
     type: 3}
 --- !u!1 &1146928683089815899
 GameObject:
