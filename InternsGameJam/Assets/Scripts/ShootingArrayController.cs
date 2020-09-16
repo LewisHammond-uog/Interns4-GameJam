@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootingArrayController : MonoBehaviour
+public class ShootingArrayController : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private Transform player;
@@ -10,6 +11,12 @@ public class ShootingArrayController : MonoBehaviour
     [SerializeField]
     private float orbitDist = 1.5f;
 
+    private PhotonView PV;
+
+    private void Start()
+    {
+        PV = GetComponent<PhotonView>();
+    }
 
     private void Update()
     {

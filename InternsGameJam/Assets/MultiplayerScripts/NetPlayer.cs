@@ -8,7 +8,7 @@ public class NetPlayer : MonoBehaviour
 {
     private PhotonView PV;
 
-    private const string playerPrefabName = "PlayerPrefab";
+    private const string playerPrefabName = "Player";
 
     [HideInInspector] public GameObject thisPlayer;
 
