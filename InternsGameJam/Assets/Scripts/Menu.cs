@@ -21,10 +21,13 @@ public class Menu : MonoBehaviour
     private bool hasChanged;
     private float step = 1f;
 
+    private Lobby lobby;
+
     void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        lobby = GetComponent<Lobby>();
+       // Cursor.visible = false;
+       // Cursor.lockState = CursorLockMode.Locked;
 
         numberOfOptions = textBoxes.Length - 1;
         selectedOption = 0;
@@ -104,7 +107,7 @@ public class Menu : MonoBehaviour
     // Menu actions.
     public void LoadGame()
     {
-        SceneManager.LoadScene("MainWorkingScene");
+        lobby.onStartClick();
     }
 
     public void LoadControls()

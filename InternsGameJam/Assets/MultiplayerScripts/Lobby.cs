@@ -9,9 +9,9 @@ public class Lobby : MonoBehaviourPunCallbacks
 {
 
     public static Lobby lobby;
-    public GameObject startButton;
-    public GameObject cancelButton;
-    public GameObject offlineButton;
+   // public GameObject startButton;
+   // public GameObject cancelButton;
+   // public GameObject offlineButton;
 
     private void Awake()
     {
@@ -20,8 +20,8 @@ public class Lobby : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        cancelButton.SetActive(false);
-        startButton.SetActive(false);
+   //     cancelButton.SetActive(false);
+   //     startButton.SetActive(false);
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -29,25 +29,25 @@ public class Lobby : MonoBehaviourPunCallbacks
     {
         Debug.Log("Player connected");
         PhotonNetwork.AutomaticallySyncScene = true;
-        startButton.SetActive(true);
-        cancelButton.SetActive(false);
-        offlineButton.SetActive(false);
+    //    startButton.SetActive(true);
+    //    cancelButton.SetActive(false);
+    //    offlineButton.SetActive(false);
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
 
-        startButton.SetActive(false);
-        cancelButton.SetActive(false);
-        offlineButton.SetActive(true);
+     //   startButton.SetActive(false);
+     //   cancelButton.SetActive(false);
+     //   offlineButton.SetActive(true);
         Debug.Log("Disconnected. Cause: " + cause);
     }
 
     public void onStartClick()
     {
         Debug.Log("Start clicked");
-        startButton.SetActive(false);
-        cancelButton.SetActive(true);
+     //   startButton.SetActive(false);
+     //   cancelButton.SetActive(true);
         PhotonNetwork.JoinRandomRoom();
     }
 
@@ -83,12 +83,12 @@ public class Lobby : MonoBehaviourPunCallbacks
 
     public void OnCancelButtonClicked()
     {
-        cancelButton.GetComponent<Button>().interactable = false;
-        cancelButton.GetComponentInChildren<Text>().text = "Cancelling...";
-        startButton.SetActive(false);
+      //  cancelButton.GetComponent<Button>().interactable = false;
+      //  cancelButton.GetComponentInChildren<Text>().text = "Cancelling...";
+      //  startButton.SetActive(false);
         PhotonNetwork.LeaveRoom();
-        cancelButton.GetComponentInChildren<Text>().text = "Cancel";
-        cancelButton.GetComponent<Button>().interactable = true;
+      //  cancelButton.GetComponentInChildren<Text>().text = "Cancel";
+      //  cancelButton.GetComponent<Button>().interactable = true;
     }
 
 }
