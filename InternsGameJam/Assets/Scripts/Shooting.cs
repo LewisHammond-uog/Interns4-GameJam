@@ -24,7 +24,7 @@ public class Shooting : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab);
             bullet.transform.position = spawnPoint.position;
             bullet.transform.rotation = spawnPoint.rotation;
-            bullet.GetComponent<Bullet>().Creator = this.gameObject;
+            bullet.GetComponent<Bullet>().creatorTag = this.gameObject.tag;
         }
     }
 }
