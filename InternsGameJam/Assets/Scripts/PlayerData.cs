@@ -47,4 +47,18 @@ public class PlayerData : MonoBehaviour
             }
         }
     }
+
+    private void DestoryPlayer()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        PlayerDeath += DestoryPlayer;
+    }
+    private void OnDisable()
+    {
+        PlayerDeath -= DestoryPlayer;
+    }
 }
