@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
         //Set our velocity on start
         if(bulletRB != null)
         {
-            UpdateVelocityInCurrentDir(baseMoveSpeed);
+            UpdateBulletBasedOnGameSpeed();
         }
 
     }
