@@ -25,12 +25,16 @@ public class EnemyHealth : MonoBehaviour
 
         EnemyDamaged?.Invoke();
         enemyHealth -= damage;
+        Debug.Log("THATS A LOT OF DAMAGE!");
     }
 
     private void Die()
     { 
         EnemySpawnManager.enemyCount--;
         EnemyDeath?.Invoke();
+
+        //When an enemy dies half the timescale for 30 seconds
+
         Destroy(gameObject);
     }
 

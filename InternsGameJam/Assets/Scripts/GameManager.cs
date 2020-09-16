@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     {
         //Increase the score
         CurrentScore += scorePerKill;
-        ReportScoreIncrease(CurrentScore);
+        ReportScoreIncrease?.Invoke(CurrentScore);
     }
 
     public void TestGameSpeed(int speed)
@@ -58,6 +58,13 @@ public class GameManager : MonoBehaviour
         GameSpeed += speed;
 
         Debug.Log("The game speed is now " + GameSpeed);
+    }
+
+    public IEnumerator SlowTimescaleForSetTime(float gameSpeed, float time)
+    {
+        this.gameSpeed = gameSpeed; 
+        yield return new WaitForSecondsRealtime(time);
+        this.gameSpeed = 1;
     }
 
     private void OnEnable()
