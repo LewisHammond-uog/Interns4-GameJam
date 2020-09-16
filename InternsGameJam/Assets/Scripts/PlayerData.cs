@@ -60,11 +60,15 @@ public class PlayerData : MonoBehaviour
 
     private void DestoryPlayer()
     {
-        Destroy(gameObject);
-        PhotonNetwork.Disconnect();
-        PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LeaveLobby();
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        if(PV.IsMine)
+        {
+            Destroy(gameObject);
+            PhotonNetwork.Disconnect();
+            PhotonNetwork.LeaveRoom();
+            PhotonNetwork.LeaveLobby();
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
+
     }
 
     private void OnEnable()
