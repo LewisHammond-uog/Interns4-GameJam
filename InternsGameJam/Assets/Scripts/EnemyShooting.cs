@@ -7,7 +7,7 @@ public class EnemyShooting : Shooting
 
     //Random time variace, to simulate them waiting to shoot
     [SerializeField] private float randomWaitTime = 0f;
-    [SerializeField] private float maxRandomWait = 2f;
+    [SerializeField] private float maxRandomWait = 20f;
     [SerializeField] private float minRandomWait = 0.5f;
 
     // Start is called before the first frame update

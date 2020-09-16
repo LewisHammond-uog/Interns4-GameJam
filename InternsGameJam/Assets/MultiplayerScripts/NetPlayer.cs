@@ -18,7 +18,7 @@ public class NetPlayer : MonoBehaviour
         if (PV.IsMine)
         {
             thisPlayer = PhotonNetwork.Instantiate(Path.Combine("Prefabs", playerPrefabName),
-                GameSetup.setup.spawnPoint.position, Quaternion.identity, 0);
+                Vector3.zero, Quaternion.identity, 0);
 
         }
     }

@@ -8,11 +8,11 @@ public class PlayerShooting : Shooting
     // Start is called before the first frame update
     private PhotonView PV;
 
+
     void Start()
     {
-        timeSinceLastShot = 0f;
-
         PV = GetComponent<PhotonView>();
+        timeSinceLastShot = 0f;
     }
 
     // Update is called once per frame
@@ -26,18 +26,24 @@ public class PlayerShooting : Shooting
 
         if (Input.GetMouseButtonDown(0) && IsMouseOverGameWindow)
         {
-            
-            if(timeSinceLastShot > shootingCooldown)
+            if (timeSinceLastShot > shootingCooldown)
             {
-                //Shoot();
-                PV.RPC("RPC_Shoot", RpcTarget.AllBuffered);
-
+                Shoot();
 
                 //Reset Timer
                 timeSinceLastShot = 0f;
             }
         }
     }
+
+    bool IsMouseOverGameWindow { 
+        get { return !(0 > Input.mousePosition.x ||
+                0 > Input.mousePosition.y || 
+                Screen.width < Input.mousePosition.x ||
+                Screen.height < Input.mousePosition.y);
+        } 
+    }
+
 
 
 }

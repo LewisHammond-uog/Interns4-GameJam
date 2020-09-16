@@ -23,8 +23,8 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
 
         numberOfOptions = textBoxes.Length - 1;
         selectedOption = 0;

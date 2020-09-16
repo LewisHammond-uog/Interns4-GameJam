@@ -85,7 +85,6 @@ public class Bullet : MonoBehaviourPunCallbacks
     private void OnEnable()
     {
         //Sub to event when the game speed is changed
-        Debug.Log(GameManager.Instance.GameSpeed);
         GameManager.GameSpeedChanged += UpdateBulletBasedOnGameSpeed;
     }
     private void OnDisable()
