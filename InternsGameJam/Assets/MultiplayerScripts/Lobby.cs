@@ -28,6 +28,7 @@ public class Lobby : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("Player connected");
+        PhotonNetwork.AutomaticallySyncScene = true;
         startButton.SetActive(true);
         cancelButton.SetActive(false);
         offlineButton.SetActive(false);
@@ -56,11 +57,6 @@ public class Lobby : MonoBehaviourPunCallbacks
 
         //Create room if error (typically because no rooms available)
         CreateRoom();
-    }
-
-    public override void OnJoinedRoom()
-    {
-        Debug.Log("Joined room!");
     }
 
     private void CreateRoom()
