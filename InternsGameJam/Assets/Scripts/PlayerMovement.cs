@@ -13,7 +13,10 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (playerRB == null)
+        {
+            Debug.LogError("PLAYER DOES NOT HAVE A RIGID BODY");
+        }
     }
 
     // Update is called once per frame
