@@ -35,6 +35,7 @@ public class EnemyShootingArray : MonoBehaviour
     protected float GetEnemyToPlayerAngle()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (!player) { return 0f; }
 
         //Get the agnle from the mouse to the player
         Vector3 mouseWorldPos = player.transform.position;
