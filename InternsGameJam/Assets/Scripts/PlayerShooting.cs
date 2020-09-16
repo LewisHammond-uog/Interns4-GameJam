@@ -3,21 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShooting : MonoBehaviourPunCallbacks
+public class PlayerShooting : Shooting
 {
-    [SerializeField]
-    private Transform[] bulletSpawns; //Points to spawn the bullets at
-
-    [SerializeField]
-    private float shootingCooldown = 0.5f;
-    private float timeSinceLastShot = 0f;
-
-    [SerializeField]
-    private GameObject bulletPrefab;
-
+    // Start is called before the first frame update
     private PhotonView PV;
 
-    // Start is called before the first frame update
     void Start()
     {
         timeSinceLastShot = 0f;
@@ -47,28 +37,6 @@ public class PlayerShooting : MonoBehaviourPunCallbacks
                 timeSinceLastShot = 0f;
             }
         }
-    }
-
-    /// <summary>
-    /// Shoots from all of the spawn points
-    /// </summary>
-    [PunRPC]
-    private void RPC_Shoot()
-    {
-        foreach(Transform spawnPoint in bulletSpawns)
-        {
-            GameObject bullet = Instantiate(bulletPrefab);
-            bullet.transform.position = spawnPoint.position;
-            bullet.transform.rotation = spawnPoint.rotation;
-        }
-    }
-
-    bool IsMouseOverGameWindow { 
-        get { return !(0 > Input.mousePosition.x ||
-                0 > Input.mousePosition.y ||
-                Screen.width < Input.mousePosition.x ||
-                Screen.height < Input.mousePosition.y);
-        } 
     }
 
 

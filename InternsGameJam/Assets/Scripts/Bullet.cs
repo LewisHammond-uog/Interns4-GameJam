@@ -19,16 +19,27 @@ public class Bullet : MonoBehaviourPunCallbacks
             } 
         }
     }
+    public string creatorTag;
 
     public bool EffectedByGameSpeed { get => effectedByGameSpeed; set => effectedByGameSpeed = value; }
     private bool effectedByGameSpeed = true;
 
+    //Damage
+    [SerializeField]
+    private float damage = 5f;
+    public float BulletDamage { 
+        private set { damage = value; } 
+        get { return damage; } 
+    }
 
     [SerializeField]
     private float baseMoveSpeed; //Movespeed when time scale is 1
 
     [SerializeField]
     private Rigidbody2D bulletRB;
+
+    [SerializeField]
+    private float bulletLife = 30f; //time before bullet destroys in seconds
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +57,7 @@ public class Bullet : MonoBehaviourPunCallbacks
         }
 
 
+        Destroy(gameObject, bulletLife);
 
     }
 
@@ -82,6 +94,11 @@ public class Bullet : MonoBehaviourPunCallbacks
         GameManager.GameSpeedChanged -= UpdateBulletBasedOnGameSpeed;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
+    }
 
-    
+
+
 }
