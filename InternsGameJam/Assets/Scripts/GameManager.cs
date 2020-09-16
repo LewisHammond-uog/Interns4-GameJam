@@ -67,8 +67,16 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator SlowTimescaleForSetTime(float gameSpeed, float time)
     {
-        this.GameSpeed = gameSpeed;
+        const float fadeSpeed = 0.1f;
+        float t = 0;
+        this.gameSpeed = gameSpeed;
         yield return new WaitForSeconds(time);
+        while (this.gameSpeed < 1)
+        {
+            this.gameSpeed = Mathf.SmoothStep(this.gameSpeed, 1, t);
+            t += fadeSpeed * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
         this.GameSpeed = 1;
     }
 
