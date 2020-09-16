@@ -7,6 +7,10 @@ public class EnemyHealth : MonoBehaviour
 {
     private int enemyHealth;
 
+    public delegate void EnemyHealthEvent();
+    public static event EnemyHealthEvent EnemyDamaged;
+    public static event EnemyHealthEvent EnemyDeath;
+
     private void Awake()
     {
         enemyHealth = 100;
@@ -18,14 +22,15 @@ public class EnemyHealth : MonoBehaviour
         {
             Die();
         }
-        
+
+        EnemyDamaged?.Invoke();
         enemyHealth -= damage;
     }
 
     private void Die()
     { 
         EnemySpawnManager.enemyCount--;
-
+        EnemyDeath?.Invoke();
         Destroy(gameObject);
     }
 }
