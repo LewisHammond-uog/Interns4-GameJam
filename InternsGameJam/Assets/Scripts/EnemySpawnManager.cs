@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Vector2 = System.Numerics.Vector2;
 
-public class EnemySpawnManager : MonoBehaviour
+public class EnemySpawnManager : MonoBehaviourPunCallbacks
 {
     public static int enemyCount;
 
@@ -23,15 +24,19 @@ public class EnemySpawnManager : MonoBehaviour
     private float x;
     private float y;
 
+    private PhotonView PV;
+
     // Start is called before the first frame update
     void Start()
     {
         camera = Camera.main;
+        PV = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         Random.seed = (int)System.DateTime.Now.Ticks;
         
         timer += Time.deltaTime;

@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
+
+    private PhotonView PV;
 
     [Range(0, 100)]
     private float health;
@@ -36,6 +39,7 @@ public class PlayerData : MonoBehaviour
     {
         //Start with full health
         Health = startHealth;
+        PV = GetComponent<PhotonView>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -57,6 +61,10 @@ public class PlayerData : MonoBehaviour
     private void DestoryPlayer()
     {
         Destroy(gameObject);
+        PhotonNetwork.Disconnect();
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LeaveLobby();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     private void OnEnable()
