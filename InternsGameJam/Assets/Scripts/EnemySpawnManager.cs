@@ -5,7 +5,7 @@ using Vector2 = System.Numerics.Vector2;
 
 public class EnemySpawnManager : MonoBehaviour
 {
-    private int enemyCount;
+    public static int enemyCount;
 
     [SerializeField] private GameObject normalEnemyPrefab;
     [SerializeField] private GameObject variationEnemyPrefab;
@@ -92,5 +92,10 @@ public class EnemySpawnManager : MonoBehaviour
             y = Random.Range(minLeft, minRight);
             GetRandom(ref x);
         }
+    }
+
+    public void KillRandoEnemy()
+    {
+        GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyHealth>().TakeDamage(100);
     }
 }
