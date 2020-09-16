@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private Transform target;
-    private float speedModifier = 0.6f;
+    private float speedModifier = 0.4f;
 
     private Rigidbody2D rb;
 
@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (!isNormalEnemy)
         {
-            speedModifier = 0.4f;
+            speedModifier = 0.5f;
         }
     }
 

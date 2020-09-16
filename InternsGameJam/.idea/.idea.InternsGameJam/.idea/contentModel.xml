@@ -18,6 +18,7 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="EnemyManager.cs" t="Include" />
           <e p="EnemyMovement.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
         </e>
