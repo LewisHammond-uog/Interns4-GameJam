@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
     }
 
     [SerializeField]
-    private float moveSpeed; //Movespeed when time scale is 1
+    private float baseMoveSpeed; //Movespeed when time scale is 1
 
     [SerializeField]
     private Rigidbody2D bulletRB;
@@ -30,15 +30,19 @@ public class Bullet : MonoBehaviour
         //Set our velocity on start
         if(bulletRB != null)
         {
-            UpdateVelocityInCurrentDir(moveSpeed);
+            UpdateVelocityInCurrentDir(baseMoveSpeed);
         }
 
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// funct triggered by event when the game speed is changed
+    /// </summary>
+    private void UpdateBulletBasedOnGameSpeed()
     {
-        
+        //Get the new game speed, mutiply it by the base speed,
+        //set veloocity
+        UpdateVelocityInCurrentDir(baseMoveSpeed * GameManager.Instance.GameSpeed);
     }
 
     /// <summary>
@@ -48,22 +52,18 @@ public class Bullet : MonoBehaviour
     {
         bulletRB.velocity = bulletRB.transform.right * speed;
     }
-
-    /*
+    
     private void OnEnable()
     {
         //Sub to event when the game speed is changed
-        GameManager.GameSpeedChanged += GameManager_GameSpeedChanged;
+        GameManager.GameSpeedChanged += UpdateBulletBasedOnGameSpeed;
     }
     private void OnDisable()
     {
         //Unsubbed when destroyed
-        GameManager.GameSpeedChanged -= GameManager_GameSpeedChanged;
+        GameManager.GameSpeedChanged -= UpdateBulletBasedOnGameSpeed;
     }
 
-    private void GameManager_GameSpeedChanged()
-    {
-        throw new System.NotImplementedException();
-    }
-    */
+
+    
 }
