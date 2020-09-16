@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 4591835976983564162}
-  orbitDist: 1.5
+  orbitDist: 0.2
 --- !u!1 &4591835976983564162
 GameObject:
   m_ObjectHideFlags: 0

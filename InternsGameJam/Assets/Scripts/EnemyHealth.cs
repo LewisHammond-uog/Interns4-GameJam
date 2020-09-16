@@ -33,4 +33,16 @@ public class EnemyHealth : MonoBehaviour
         EnemyDeath?.Invoke();
         Destroy(gameObject);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Bullet bullet;
+        if(collision.gameObject.TryGetComponent(out bullet))
+        {
+            if(bullet.creatorTag != tag)
+            {
+                TakeDamage((int)bullet.BulletDamage);
+            }
+        }
+    }
 }
