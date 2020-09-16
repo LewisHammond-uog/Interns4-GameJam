@@ -28,7 +28,7 @@ public class PlayerShooting : Shooting
         {
             if (timeSinceLastShot > shootingCooldown)
             {
-                Shoot();
+                Shoot(true);
 
                 //Reset Timer
                 timeSinceLastShot = 0f;

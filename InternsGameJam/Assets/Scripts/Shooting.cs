@@ -19,16 +19,22 @@ public class Shooting : MonoBehaviourPunCallbacks
     /// <summary>
     /// Shoots from all of the spawn points
     /// </summary>
-    protected void Shoot()
+    protected void Shoot(bool isEnemy)
     {
         foreach (Transform spawnPoint in bulletSpawns)
         {
+            if(isEnemy)
+            {
+                GameObject eBullet = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "EnemyBullet"), spawnPoint.position, spawnPoint.rotation, 0);
+                eBullet.GetComponent<Bullet>().creatorTag = this.gameObject.tag;
+            }
+            else
+            {
+                GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "PlayerBullet"), spawnPoint.position, spawnPoint.rotation, 0);
+                bullet.GetComponent<Bullet>().creatorTag = this.gameObject.tag;
 
-       //     GameObject bullet = Instantiate(bulletPrefab);
-            GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "PlayerBullet"), spawnPoint.position, spawnPoint.rotation, 0);
-         //   bullet.transform.position = spawnPoint.position;
-         //   bullet.transform.rotation = spawnPoint.rotation;
-            bullet.GetComponent<Bullet>().creatorTag = this.gameObject.tag;
+            }
+
         }
     }
 }
