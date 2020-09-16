@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Vector2 = System.Numerics.Vector2;
 
-public class EnemyManager : MonoBehaviour
+public class EnemySpawnManager : MonoBehaviour
 {
     private int enemyCount;
 
@@ -20,7 +20,8 @@ public class EnemyManager : MonoBehaviour
     private float minRight = 1f;
     private float maxRight = 1.1f;
 
-    private float half = .5f;
+    private float x;
+    private float y;
 
     // Start is called before the first frame update
     void Start()
@@ -31,13 +32,15 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Random.seed = (int)System.DateTime.Now.Ticks;
+        
         timer += Time.deltaTime;
 
         if (timer >= coolDown)
         {
             timer -= coolDown;
-            
-            SpawnEnemy(normalEnemyPrefab, GetRandomLocation());
+
+            ChooseEnemyToSpawn();
         }
     }
 
@@ -47,25 +50,47 @@ public class EnemyManager : MonoBehaviour
         enemyCount++;
     }
 
-    Vector3 GetRandomLocation()
+    Vector3 GetLocation()
     {
-        return camera.ViewportToWorldPoint(position: new Vector3(GetRandomValue(), GetRandomValue(), camera.nearClipPlane));
+        GetRandomCoords();
+        return camera.ViewportToWorldPoint(position: new Vector3(x, y,camera.nearClipPlane));
     }
 
-    float GetRandomValue()
+    void GetRandom(ref float f)
     {
-        Random.seed = (int)System.DateTime.Now.Ticks;
-        float value;
-        
-        if (Random.value < half)
+        if (Random.value < .5)
         {
-            value = Random.Range(minLeft, maxLeft);
+            f = Random.Range(minLeft, maxLeft);
         }
         else
         {
-            value = Random.Range(minRight, maxRight);
+            f = Random.Range(minRight, maxRight);
         }
+    }
 
-        return value;
+    void ChooseEnemyToSpawn()
+    {
+        if (Random.value < .9)
+        {
+            SpawnEnemy(normalEnemyPrefab, GetLocation());
+        }
+        else
+        {
+            SpawnEnemy(variationEnemyPrefab, GetLocation());
+        }
+    }
+    
+    void GetRandomCoords()
+    {
+        if (Random.value < .5)
+        {
+            x = Random.Range(minLeft, minRight);
+            GetRandom(ref y);
+        }
+        else
+        {
+            y = Random.Range(minLeft, minRight);
+            GetRandom(ref x);
+        }
     }
 }
