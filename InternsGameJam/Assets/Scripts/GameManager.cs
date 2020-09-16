@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get => instance; set => instance = value; }
 
-    private float gameSpeed;
+    private float gameSpeed = 1f;
 
     public float GameSpeed
     {
@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
 
     public void TestGameSpeed(int speed)
     {
-        GameSpeed = speed;
-        
+        GameSpeed += speed;
+
         Debug.Log("The game speed is now " + GameSpeed);
     }
 }
