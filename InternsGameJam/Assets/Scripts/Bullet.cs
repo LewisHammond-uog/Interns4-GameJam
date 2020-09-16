@@ -27,6 +27,10 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Warning no creator
+        if (creator == null) { Debug.LogWarning("CREATOR HAS NOT BEEN SET FOR BULLET!"); }
+
+
         //Set our velocity on start
         if(bulletRB != null)
         {
@@ -42,13 +46,13 @@ public class Bullet : MonoBehaviour
     {
         //Get the new game speed, mutiply it by the base speed,
         //set veloocity
-        UpdateVelocityInCurrentDir(baseMoveSpeed * GameManager.Instance.GameSpeed);
+        UpdateSpeed(baseMoveSpeed * GameManager.Instance.GameSpeed);
     }
 
     /// <summary>
     /// Sets a new veolcity while keeping the current direction
     /// </summary>
-    private void UpdateVelocityInCurrentDir(float speed)
+    private void UpdateSpeed(float speed)
     {
         bulletRB.velocity = bulletRB.transform.right * speed;
     }
