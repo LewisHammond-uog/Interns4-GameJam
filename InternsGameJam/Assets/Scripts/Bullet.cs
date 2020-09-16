@@ -21,6 +21,13 @@ public class Bullet : MonoBehaviour
     public bool EffectedByGameSpeed { get => effectedByGameSpeed; set => effectedByGameSpeed = value; }
     private bool effectedByGameSpeed = true;
 
+    //Damage
+    [SerializeField]
+    private float damage = 5f;
+    public float BulletDamage { 
+        private set { damage = value; } 
+        get { return damage; } 
+    }
 
     [SerializeField]
     private float baseMoveSpeed; //Movespeed when time scale is 1
