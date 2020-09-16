@@ -20,6 +20,8 @@ public class EnemyShooting : Shooting
     // Update is called once per frame
     void Update()
     {
+        timeSinceLastShot += Time.deltaTime;
+
         if(timeSinceLastShot > randomWaitTime)
         {
             Shoot();

@@ -121,12 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &372423792 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4591835976983564162, guid: 0c0c222002d4fe749800a5db50d3c8c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 612324577}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &383546480
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,36 +552,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &583702023
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 583702024}
-  m_Layer: 0
-  m_Name: SpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &583702024
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583702023}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2140849227}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &612324577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -599,11 +563,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Normal Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 4591835976983564165, guid: 0c0c222002d4fe749800a5db50d3c8c6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4591835976983564167, guid: 0c0c222002d4fe749800a5db50d3c8c6,
         type: 3}
@@ -668,18 +627,12 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 612324577}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372423792}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7cb4164cfec5b94e8909377cbea8b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &612324579 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4591835976983564167, guid: 0c0c222002d4fe749800a5db50d3c8c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 612324577}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &866069875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,71 +1283,3 @@ MonoBehaviour:
     type: 3}
   variationEnemyPrefab: {fileID: 7113185436454516517, guid: 0531f765aec574246ad2375f29c3c03e,
     type: 3}
---- !u!1 &2140849226
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2140849227}
-  - component: {fileID: 2140849228}
-  - component: {fileID: 2140849229}
-  m_Layer: 0
-  m_Name: Shooting
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2140849227
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140849226}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 583702024}
-  m_Father: {fileID: 612324579}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2140849228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140849226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b2ea1dcbe26d7418b8c30187d3a131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpawns:
-  - {fileID: 583702024}
-  shootingCooldown: 0.5
-  bulletPrefab: {fileID: 2720317012268630345, guid: a28505d21d3e9864484a709b8bb0ee3c,
-    type: 3}
-  randomWaitTime: 0
-  maxRandomWait: 2
-  minRandomWait: 0.5
---- !u!114 &2140849229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140849226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cc799e75a90a7148b2903d302e18108, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  orbitDist: 1.5
-  parent: {fileID: 372423792}
